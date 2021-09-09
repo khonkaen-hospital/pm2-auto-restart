@@ -8,9 +8,9 @@
 
 ## Command
 ```
-    - pm2-restart-all
-    - pm2-restart [pm2Name]
-    - pm2-list [pm2Name]
+- pm2-restart-all
+- pm2-restart [pm2Name]
+- pm2-list [pm2Name]
 ```
 ## Example
 ```
