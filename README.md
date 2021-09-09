@@ -27,7 +27,7 @@ Process by reading the value `1` in the `auto-load` file and changing it to `0` 
 
 ```
 
-## set auto start with crontab (linux, MacOS)
+## set auto re-start with crontab system (linux, MacOS)
 ```
 # add to crontab for restart every 2 minute
 
