@@ -27,9 +27,9 @@ Process by reading the value `1` in the `auto-load` file and changing it to `0` 
 
 ```
 
-## add crontab (linux, MacOS)
+## set auto start with crontab (linux, MacOS)
 ```
-# add crontab for restart every 2 minute
+# add to crontab for restart every 2 minute
 
     > sudo crontab -e
     add ->  */2 * * * * node index.js pm2-restart-all
