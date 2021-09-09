@@ -1,7 +1,7 @@
 # iHospital API service
 ## for restart PM2 service
 
-Process by reading the value `1` in the `auto-load` file and changing it to 0 after restarting PM2.
+Process by reading the value `1` in the `auto-load` file and changing it to `0` after restarting PM2.
 
 ## Usage
 `
@@ -27,8 +27,11 @@ Process by reading the value `1` in the `auto-load` file and changing it to 0 af
 
 ```
 
-## add crontab
+## add crontab (linux, MacOS)
 ```
+# add crontab for restart every 2 minute
+
     > sudo crontab -e
     add ->  */2 * * * * node index.js pm2-restart-all
+
 ```
