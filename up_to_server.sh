@@ -1,5 +1,5 @@
 username="www"
-IPS=(
+IPS= (
   "192.168.0.86:/app_data/api/crontab"
   )
 for IP in "${IPS[@]}"
