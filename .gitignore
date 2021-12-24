@@ -1,6 +1,6 @@
 .env
 config
-up_to_server.sh
+upload.sh
 /dist
 /tmp
 
