@@ -5,7 +5,7 @@ Process by reading the value `1` in the `auto-load` file and changing it to `0` 
 
 ## Usage
 `
-    node index.js <command>
+    node src/index.js <command>
 `
 
 ## Command

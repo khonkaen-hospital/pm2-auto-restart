@@ -1,11 +1,15 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../config') });
+
 const fs = require('fs');
 const shell = require("shelljs");
 const chalk = require('chalk');
-
 const cmdType = process.argv[2];
 
-console.log('Start: ', new Date().toString());
-console.log('Service: ' + cmdType);
+if (cmdType){
+	console.log('Start: ', new Date().toString());
+	console.log('Service: ' + cmdType);
+}
 
 switch (cmdType) {
 	case 'pm2-restart-all':
@@ -21,12 +25,15 @@ switch (cmdType) {
 		var pm2Name = process.argv[3] ? process.argv[3] : '';
 		listPM2(pm2Name);
 		break;
+	default:
+		console.log('Start crontab: ', new Date().toString());
+		const cron = require('./crontab');
+		break;
 }
 
 //
 // Function Zone =========================================================================
 //
-
 function reload_all() {
 	let processList = getPM2Process('');
 	let lastPm2Name = '';
@@ -68,7 +75,7 @@ function checkupdate_and_restart_pm2(pm2Name, fileCheck = 'auto_reload') {
 				}
 			})
 		} else {
-			console.log(pm2Name, ':', chalk.green.bold('File auto-load was restarted.'));
+			console.log(pm2Name, ':', chalk.green.bold('AutoLoad=0, File auto-load was restarted.'));
 		}
 	} catch (err) {
 		console.log(pm2Name, ':', chalk.red.bold('File auto-load not found.'));
