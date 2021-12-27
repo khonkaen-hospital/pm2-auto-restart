@@ -7,7 +7,7 @@ var secondRange = process.env.TIME_WAIT_RANGE.split(',');
 
 console.log('crontab', process.env.TIMER);
 console.log('user', userList);
-console.log('time sleep', secondRange);
+console.log('remove time sleep in range ', secondRange);
 
 cron.schedule(process.env.TIMER, () => {
   clearConnection();
