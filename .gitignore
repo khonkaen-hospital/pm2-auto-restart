@@ -15,8 +15,8 @@ upload.sh
 *.launch
 .settings/
 *.sublime-workspace
-.sh
-.pl
+*.sh
+*.pl
 
 # IDE - VSCode
 .vscode/*
