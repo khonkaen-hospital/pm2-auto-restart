@@ -1,0 +1,35 @@
+Get token
+array(2) {
+  [0]=>
+  array(6) {
+    ["vaccine_dose_no"]=>
+    int(1)
+    ["vaccine_date"]=>
+    string(10) "2021-10-11"
+    ["vaccine_name"]=>
+    string(9) "CoronaVac"
+    ["vaccine_manufacturer_name"]=>
+    string(21) "Sinovac Life Sciences"
+    ["vaccine_lot_number"]=>
+    string(10) "L202108089"
+    ["vaccine_place"]=>
+    string(48) "โรงพยาบาลขอนแก่น"
+  }
+  [1]=>
+  array(6) {
+    ["vaccine_dose_no"]=>
+    int(2)
+    ["vaccine_date"]=>
+    string(10) "2021-11-08"
+    ["vaccine_name"]=>
+    string(11) "AstraZeneca"
+    ["vaccine_manufacturer_name"]=>
+    string(11) "AstraZeneca"
+    ["vaccine_lot_number"]=>
+    string(5) "A1118"
+    ["vaccine_place"]=>
+    string(48) "โรงพยาบาลขอนแก่น"
+  }
+}
+UPDATE `immunization_center`.`mophic_person_vaccinated` SET vaccine_date_1='2021-10-11' ,vaccine_name_1='CoronaVac' ,vaccine_manufacturer_1='Sinovac Life Sciences' ,vaccine_place_1='โรงพยาบาลขอนแก่น' ,update=NOW() WHERE cid='1100200086038' => 
+UPDATE `immunization_center`.`mophic_person_vaccinated` SET vaccine_date_2='2021-11-08' ,vaccine_name_2='AstraZeneca' ,vaccine_manufacturer_2='AstraZeneca' ,vaccine_place_2='โรงพยาบาลขอนแก่น' ,update=NOW() WHERE cid='1100200086038' => 

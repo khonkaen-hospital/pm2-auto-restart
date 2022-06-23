@@ -12,7 +12,7 @@ console.log('remove time sleep in range ', secondRange);
 
 cron.schedule(process.env.TIMER, () => {
   let second = +moment().get('seconds');
-  console.log(moment().format('HH:mm:ss'));
+  // console.log(moment().format('HH:mm:ss'));
   clearConnection();
   if (second == 0) {
     extractResult();
@@ -20,25 +20,28 @@ cron.schedule(process.env.TIMER, () => {
 });
 
 async function clearConnection() {
-  console.log("=".repeat(100));
-  connection.query('SHOW processlist', (err, results, fields) => {
-    var seq = 0;
+  var seq = 0;
+  var successed = 0;
+  // console.log("=".repeat(100));
+  connection.query('SHOW processlist', async (err, results, fields) => {
     for (let row of results) {
+      const ip = row['Host'].split(':');
+      // if (row['Command'] == "Sleep" && (userList.indexOf(row['User']) >= 0 || ip[0]=='192.168.0.128') && row['Time'] >= +secondRange[0] && row['Time'] <= +secondRange[1]) {
       if (row['Command'] == "Sleep" && userList.indexOf(row['User']) >= 0 && row['Time'] >= +secondRange[0] && row['Time'] <= +secondRange[1]) {
-        connection.query(`KILL ${row['Id']}`, (err, results, fields) => {
+        connection.query(`KILL ${row['Id']}`, async (err, results, fields) => {
           seq += 1;
-          console.log(seq, '.' + moment().format('HH:mm:ss'), ' user:' + row['User'], ' ID:' + row['Id'], ' time:' + row['Time'],
-            " clear result: ", (results ? results.serverStatus : (err ? err.code : ' undefined')));
+          successed += results? 1:0;
+          // console.log(seq, '.' + moment().format('HH:mm:ss'), ' user:' + row['User'], ' ID:' + row['Id'], ' time:' + row['Time'],
+          //   " clear result: ", (results ? results.serverStatus : (err ? err.code : ' undefined')));
         });
       }
     }
-  }
-  );
-
+    console.log(moment().format('HH:mm:ss')+' Cleared ', successed+'/'+seq, ' connection');
+  });
 }
 
 async function extractResult() {
-  console.log("=".repeat(100));
+  // console.log("=".repeat(100));
   var labCode = "'04730','04738'";
   
   var date1 = moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss');
